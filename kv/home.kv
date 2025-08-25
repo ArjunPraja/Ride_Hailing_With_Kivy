@@ -1,21 +1,52 @@
 <HomeScreen>:
     name: "home"
-    MDBoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 15
+    
+    # Use FloatLayout to allow background image
+    FloatLayout:
+        
+        # Background Image
+        Image:
+            source: ""
+            allow_stretch: True
+            keep_ratio: False
+            size: self.parent.size
+            pos: self.parent.pos
 
-        MDLabel:
-            text: "Welcome To Ride Hailing App!"
-            halign: "center"
-            font_style: "H3"
+        # Overlay for semi-transparent dark effect
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: 40
+            spacing: 20
+            size_hint: 1, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            md_bg_color: [0, 0, 0, 0.4]  # semi-transparent black
 
-        MDRaisedButton:
-            text: "Book A Ride"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.book_ride()  # Call a Python function
+            MDLabel:
+                text: "Welcome To Ride Hailing App! 🚖"
+                halign: "center"
+                font_style: "H3"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
 
-        MDRaisedButton:
-            text: "Logout"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.manager.current = "login"
+            MDLabel:
+                text: "Book your ride with style and make your journey amazing!"
+                halign: "center"
+                font_style: "H5"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 0.9
+
+            MDRaisedButton:
+                text: "Book A Ride"
+                md_bg_color: 1, 0.2, 0.6, 1
+                text_color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: root.book_ride()
+                radius: [30, 30, 30, 30]  # <--- Fix here
+
+            MDRaisedButton:
+                text: "Logout"
+                md_bg_color: 0, 0, 0, 0.7
+                text_color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: root.manager.current = "login"
+                radius: [30, 30, 30, 30]  # <--- Fix here
