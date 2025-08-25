@@ -1,0 +1,21 @@
+<HomeScreen>:
+    name: "home"
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 15
+
+        MDLabel:
+            text: "Welcome To Ride Hailing App!"
+            halign: "center"
+            font_style: "H3"
+
+        MDRaisedButton:
+            text: "Book A Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.book_ride()  # Call a Python function
+
+        MDRaisedButton:
+            text: "Logout"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.manager.current = "login"

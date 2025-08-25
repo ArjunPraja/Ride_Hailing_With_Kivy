@@ -1,0 +1,91 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManager:
+    transition: FadeTransition(duration=0.3)
+    HomeScreen:
+    LoginScreen:
+    RegisterScreen:
+
+<HomeScreen>:
+    name: "home"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: (0.1, 0.1, 0.2, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "🚖 Ride Hailing"
+            font_size: "34sp"
+            bold: True
+            pos_hint: {"center_x":0.5, "center_y":0.7}
+            color: 1,1,1,1
+        Button:
+            text: "Login"
+            size_hint: 0.6, 0.1
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            background_normal: ""
+            background_color: (0.2, 0.6, 1, 1)
+            on_release: app.root.current = "login"
+        Button:
+            text: "Register"
+            size_hint: 0.6, 0.1
+            pos_hint: {"center_x":0.5, "center_y":0.35}
+            background_normal: ""
+            background_color: (0.9, 0.3, 0.4, 1)
+            on_release: app.root.current = "register"
+
+<LoginScreen>:
+    name: "login"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 15
+        padding: 40
+        canvas.before:
+            Color:
+                rgba: (0.05, 0.05, 0.1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "🔑 Login"
+            font_size: "28sp"
+            color: 1,1,1,1
+            size_hint_y: 0.2
+        TextInput:
+            hint_text: "Email"
+            size_hint_y: 0.15
+            multiline: False
+            background_color: (1,1,1,0.2)
+            foreground_color: 1,1,1,1
+            padding: 15
+        TextInput:
+            hint_text: "Password"
+            password: True
+            size_hint_y: 0.15
+            multiline: False
+            background_color: (1,1,1,0.2)
+            foreground_color: 1,1,1,1
+            padding: 15
+        Button:
+            text: "Login"
+            size_hint_y: 0.15
+            background_normal: ""
+            background_color: (0.2, 0.6, 1, 1)
+        Button:
+            text: "⬅ Back"
+            size_hint_y: 0.15
+            background_normal: ""
+            background_color: (0.6, 0.6, 0.6, 1)
+            on_release: app.root.current = "home"
+
+<RegisterScreen>:
+    name: "register"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 15
+        padding: 40
+        canvas.before:
+            Color:
+                rgba: (0.1, 0.05, 0.1, 1)

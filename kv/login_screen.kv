@@ -1,0 +1,26 @@
+
+<LoginScreen>:
+    name: "login"
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "40dp"
+        MDLabel:
+            text: "Welcome Back 🚖"
+            halign: "center"
+            font_style: "H4"
+        MDTextField:
+            hint_text: "Email"
+            icon_right: "email"
+        MDTextField:
+            hint_text: "Password"
+            password: True
+            icon_right: "eye"
+        MDRaisedButton:
+            text: "Login"
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "home"
+        MDFlatButton:
+            text: "Don't have an account? Register"
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "register"

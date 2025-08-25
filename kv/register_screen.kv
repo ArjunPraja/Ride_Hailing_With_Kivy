@@ -1,0 +1,29 @@
+
+<RegisterScreen>:
+    name: "register"
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "40dp"
+        MDLabel:
+            text: "Create Account 📝"
+            halign: "center"
+            font_style: "H4"
+        MDTextField:
+            hint_text: "Full Name"
+            icon_right: "account"
+        MDTextField:
+            hint_text: "Email"
+            icon_right: "email"
+        MDTextField:
+            hint_text: "Password"
+            password: True
+            icon_right: "lock"
+        MDRaisedButton:
+            text: "Register"
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "home"
+        MDFlatButton:
+            text: "Already have an account? Login"
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "login"
