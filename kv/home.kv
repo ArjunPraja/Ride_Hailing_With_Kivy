@@ -1,25 +1,21 @@
 <HomeScreen>:
     name: "home"
     
-    # Use FloatLayout to allow background image
     FloatLayout:
-        
-        # Background Image
         Image:
-            source: ""
+            source: " https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"  # sexy background image
             allow_stretch: True
             keep_ratio: False
             size: self.parent.size
             pos: self.parent.pos
 
-        # Overlay for semi-transparent dark effect
         MDBoxLayout:
             orientation: "vertical"
             padding: 40
             spacing: 20
-            size_hint: 1, 1
+            size_hint: 0.9, 0.9
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            md_bg_color: [0, 0, 0, 0.4]  # semi-transparent black
+            md_bg_color: [0, 0, 0, 0.4]
 
             MDLabel:
                 text: "Welcome To Ride Hailing App! 🚖"
@@ -41,7 +37,10 @@
                 text_color: 1, 1, 1, 1
                 pos_hint: {"center_x": 0.5}
                 on_release: root.book_ride()
-                radius: [30, 30, 30, 30]  # <--- Fix here
+                radius: [30, 30, 30, 30]
+                shadow_radius: [30, 30, 30, 30]   # <-- Add this
+
+                elevation: 10
 
             MDRaisedButton:
                 text: "Logout"
@@ -49,4 +48,7 @@
                 text_color: 1, 1, 1, 1
                 pos_hint: {"center_x": 0.5}
                 on_release: root.manager.current = "login"
-                radius: [30, 30, 30, 30]  # <--- Fix here
+                radius: [30, 30, 30, 30]
+                shadow_radius: [30, 30, 30, 30]   # <-- Add this
+
+                elevation: 10
