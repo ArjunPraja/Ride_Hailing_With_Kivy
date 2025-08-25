@@ -1,54 +1,35 @@
 <HomeScreen>:
     name: "home"
-    
-    FloatLayout:
-        Image:
-            source: " https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"  # sexy background image
-            allow_stretch: True
-            keep_ratio: False
-            size: self.parent.size
-            pos: self.parent.pos
 
+    FloatLayout:
+        # Background Image full window cover
+        AsyncImage:
+            source: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+            allow_stretch: True      # stretch kare window ke size ke according
+            keep_ratio: False        # aspect ratio ignore kare
+            size: self.parent.size   # parent ka size follow kare
+            pos: self.parent.pos     # par
+        # Center Box
         MDBoxLayout:
             orientation: "vertical"
-            padding: 40
             spacing: 20
-            size_hint: 0.9, 0.9
+            padding: 1
+            size_hint: 0.8, 0.5
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            md_bg_color: [0, 0, 0, 0.4]
 
             MDLabel:
                 text: "Welcome To Ride Hailing App! 🚖"
                 halign: "center"
-                font_style: "H3"
-                theme_text_color: "Custom"
-                text_color: 1, 1, 1, 1
+                font_style: "H4"
+                theme_text_color: "Primary"
 
             MDLabel:
-                text: "Book your ride with style and make your journey amazing!"
+                text: "Book your ride easily and travel in style!"
                 halign: "center"
-                font_style: "H5"
-                theme_text_color: "Custom"
-                text_color: 1, 1, 1, 0.9
+                font_style: "H6"
+                theme_text_color: "Secondary"
 
             MDRaisedButton:
-                text: "Book A Ride"
-                md_bg_color: 1, 0.2, 0.6, 1
-                text_color: 1, 1, 1, 1
-                pos_hint: {"center_x": 0.5}
-                on_release: root.book_ride()
-                radius: [30, 30, 30, 30]
-                shadow_radius: [30, 30, 30, 30]   # <-- Add this
-
-                elevation: 10
-
-            MDRaisedButton:
-                text: "Logout"
-                md_bg_color: 0, 0, 0, 0.7
-                text_color: 1, 1, 1, 1
+                text: "Login/Register"
                 pos_hint: {"center_x": 0.5}
                 on_release: root.manager.current = "login"
-                radius: [30, 30, 30, 30]
-                shadow_radius: [30, 30, 30, 30]   # <-- Add this
-
-                elevation: 10
