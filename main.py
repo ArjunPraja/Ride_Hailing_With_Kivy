@@ -19,7 +19,7 @@ from screens.vehicle.driver_profile import DriverProfileScreen
 from screens.vehicle.ride_request_accept import ShowRidesScreen
 from screens.vehicle.show_my_accepted_rides import MyAcceptedRidesScreen
 from screens.vehicle.show_my_rides import DriverRidesScreen
-
+from screens.vehicle.driver_rating import RatingsScreen
 
 class WindowManager(ScreenManager):
     user = None 
@@ -54,6 +54,8 @@ class RideHailingApp(MDApp):
         Builder.load_file("kv/driver/requested_rides_accept_screen.kv")
         Builder.load_file("kv/driver/my_accepted_rides_screen.kv")
         Builder.load_file("kv/driver/show_my_rides_screen.kv")
+        Builder.load_file("kv/driver/driver_rating_screen.kv")
+
 
         
 
@@ -79,6 +81,7 @@ class RideHailingApp(MDApp):
         sm.add_widget(MyAcceptedRidesScreen(name="my_accepted_rides"))
         sm.add_widget(DriverRidesScreen(name="driver_rides"))
         sm.add_widget(AddVehicleScreen(name="add_vehicle"))
+        sm.add_widget(RatingsScreen(name="ratings_screen"))
 
 
         return sm

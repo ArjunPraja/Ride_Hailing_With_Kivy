@@ -1,0 +1,27 @@
+<RatingsScreen>:
+    name: "ratings_screen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        padding: "15dp"
+
+        MDTopAppBar:
+            title: "All Ride Ratings"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: setattr(app.root, "current", "driver_menu")]]
+
+        ScrollView:
+            MDBoxLayout:
+                id: ratings_container
+                orientation: "vertical"
+                adaptive_height: True
+                spacing: "5dp"
+                padding: "10dp"
+
+        MDRaisedButton:
+            text: "Back"
+            size_hint_x: None
+            width: "120dp"
+            pos_hint: {"center_x": .5}
+            on_release: app.root.current = "driver_menu"
