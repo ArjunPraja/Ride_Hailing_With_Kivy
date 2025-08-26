@@ -2,7 +2,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from models.users_models import find_by_email
-import bcrypt  # pip install bcrypt
 
 class LoginScreen(Screen):
 
@@ -13,8 +12,8 @@ class LoginScreen(Screen):
         user = find_by_email(email)
 
         if user:
-            # ✅ Check hashed password
-            if bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
+            # Simple string password check (since no hashing yet)
+            if user["password"] == password:
                 if user["role"] == "Rider":
                     self.show_popup(f"Welcome {user['full_name']}! (Rider)")
                     self.manager.current = "user_menu"
