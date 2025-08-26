@@ -3,10 +3,17 @@
     rides_list: rides_rv
     no_rides_label: no_rides_lbl
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
         padding: dp(10)
         spacing: dp(10)
+
+        # Top App Bar
+        MDTopAppBar:
+            title: "My Accepted Rides"
+            elevation: 10
+            md_bg_color: 0.2, 0.6, 0.9, 1
+            left_action_items: [["arrow-left", lambda x: setattr(app.root, "current", "driver_menu")]]
 
         MDLabel:
             id: no_rides_lbl
@@ -15,73 +22,90 @@
             theme_text_color: "Error"
             font_style: "H5"
             opacity: 0
+            size_hint_y: None
+            height: self.texture_size[1] + dp(20)
 
-        RecycleView:
-            id: rides_rv
-            viewclass: "AcceptedRideItem"
-            RecycleBoxLayout:
-                default_size: None, dp(100)
-                default_size_hint: 1, None
-                size_hint_y: None
-                height: self.minimum_height
-                orientation: "vertical"
+        ScrollView:
+            RecycleView:
+                id: rides_rv
+                viewclass: "AcceptedRideItem"
+                RecycleBoxLayout:
+                    default_size: None, dp(120)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: "vertical"
 
 
 <AcceptedRideItem>:
     size_hint_y: None
-    height: dp(100)
+    height: dp(120)
     MDCard:
         orientation: "vertical"
         padding: dp(10)
-        spacing: dp(5)
+        spacing: dp(10)
         size_hint_y: None
-        height: dp(100)
-        elevation: 3
+        height: dp(120)
+        md_bg_color: 1,1,1,1  # White background
+        elevation: 6  # Subtle shadow for depth
 
+        # Ride Info Row
         BoxLayout:
             orientation: "horizontal"
-            spacing: dp(5)
+            spacing: dp(10)
 
             MDLabel:
                 text: "Pickup: " + root.pickup
                 halign: "center"
                 size_hint_x: 0.25
+                bold: True
+                theme_text_color: "Primary"
 
             MDLabel:
                 text: "Drop: " + root.drop_location
                 halign: "center"
                 size_hint_x: 0.25
+                bold: True
+                theme_text_color: "Primary"
 
             MDLabel:
-                text: "Fare: " + root.fare
+                text: "Fare: ₹" + root.fare
                 halign: "center"
                 size_hint_x: 0.15
+                bold: True
+                theme_text_color: "Secondary"
 
             MDLabel:
                 text: root.status
                 halign: "center"
                 size_hint_x: 0.15
+                bold: True
+                theme_text_color: "Hint"
 
+        # Action Buttons Row
         BoxLayout:
             orientation: "horizontal"
-            spacing: dp(5)
+            spacing: dp(10)
             size_hint_y: None
             height: dp(40)
 
             MDRaisedButton:
                 text: "Start Ride"
                 md_bg_color: 0.2, 0.6, 0.9, 1
+                text_color: 1,1,1,1
                 on_release: root.start_ride()
                 disabled: root.status != "Accepted"
 
             MDRaisedButton:
                 text: "Cancel Ride"
                 md_bg_color: 0.9, 0.2, 0.2, 1
+                text_color: 1,1,1,1
                 on_release: root.cancel_ride()
                 disabled: root.status in ["Completed", "Cancelled"]
 
             MDRaisedButton:
                 text: "Completed"
                 md_bg_color: 0.2, 0.9, 0.3, 1
+                text_color: 1,1,1,1
                 on_release: root.complete_ride()
                 disabled: root.status != "In Progress"
