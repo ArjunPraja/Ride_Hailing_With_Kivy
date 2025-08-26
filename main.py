@@ -13,6 +13,7 @@ from screens.users.request_ride import RequestRideScreen
 
 # ScreenManager to handle screen transitions
 class WindowManager(ScreenManager):
+    user = None 
     pass
 
 

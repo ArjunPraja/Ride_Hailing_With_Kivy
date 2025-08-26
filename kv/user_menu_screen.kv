@@ -23,7 +23,7 @@
             size_hint: (0.7, None)
             height: dp(55)
             pos_hint: {"center_x": 0.5}
-            on_release: root.request_ride()
+            on_release: app.root.current = "request_ride"
 
         MDRectangleFlatButton:
             text: "View Ride by ID"

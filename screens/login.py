@@ -23,7 +23,7 @@ class LoginScreen(Screen):
                     self.manager.current = "driver_menu"
 
                 # ✅ Save logged-in user globally (for profile, rides, etc.)
-                self.manager.current_screen.user = user  
+                self.manager.user = user
 
                 # Clear fields
                 self.ids.email.text = ""
