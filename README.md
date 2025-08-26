@@ -75,7 +75,7 @@ Drivers can manage vehicles, accept rides, track ride status, view feedback, and
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/ArjunPraja/Ride_Hailing_With_Kivy.git]
+git clone https://github.com/ArjunPraja/Ride_Hailing_With_Kivy.git
 ```
 
 2. Install dependencies:
