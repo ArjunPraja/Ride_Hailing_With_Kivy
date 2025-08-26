@@ -1,0 +1,102 @@
+<DriverProfileScreen>:
+    name: "driver_profile"
+
+    MDFloatLayout:
+        md_bg_color: 0.95, 0.95, 0.95, 1
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(20)
+            padding: dp(20)
+            size_hint: 1, 1
+
+            # Header
+            MDLabel:
+                text: "Rider Profile"
+                halign: "center"
+                font_style: "H4"
+                bold: True
+                size_hint_y: None
+                height: dp(60)
+
+            # Circular Profile Image
+            MDCard:
+                size_hint: None, None
+                size: dp(180), dp(180)
+                pos_hint: {"center_x": 0.5}
+                elevation: 4
+                radius: [dp(90), dp(90), dp(90), dp(90)]
+                md_bg_color: 1, 1, 1, 1
+
+                FitImage:
+                    id: profile_img
+                    source: root.profile_image if root.profile_image else "assets/OIP.jpg"
+                    radius: [dp(90), dp(90), dp(90), dp(90)]
+                    size_hint: 1, 1
+
+            # Upload Button
+            MDRaisedButton:
+                text: "Upload Image"
+                size_hint: 0.6, None
+                height: dp(50)
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: 0.2, 0.5, 0.9, 1
+                text_color: 1, 1, 1, 1
+                on_release: root.select_image()
+
+            # Spacer
+            Widget:
+                size_hint_y: None
+                height: dp(20)
+
+            # User Info Card
+            MDCard:
+                orientation: "vertical"
+                padding: dp(20)
+                spacing: dp(15)
+                size_hint: 0.9, None
+                height: self.minimum_height
+                pos_hint: {"center_x": 0.5}
+                elevation: 2
+
+                MDLabel:
+                    text: f"Name: {root.user_name}"
+                    halign: "left"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: dp(40)
+
+                MDSeparator:
+                    height: dp(1)
+
+                MDLabel:
+                    text: f"Email: {root.user_email}"
+                    halign: "left"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: dp(40)
+
+                MDSeparator:
+                    height: dp(1)
+
+                MDLabel:
+                    text: f"Phone: {root.user_phone}"
+                    halign: "left"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: dp(40)
+
+            # Spacer
+            Widget:
+                size_hint_y: None
+                height: dp(30)
+
+            # Back Button
+            MDRaisedButton:
+                text: "Back"
+                size_hint: 0.6, None
+                height: dp(50)
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: 0.9, 0.2, 0.2, 1
+                text_color: 1, 1, 1, 1
+                on_release: app.root.current = "driver_menu"

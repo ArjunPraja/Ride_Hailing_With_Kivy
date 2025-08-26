@@ -15,6 +15,7 @@ from screens.users.completed_rides import CompletedRidesScreen
 from screens.users.profile import RiderProfileScreen
 from screens.vehicle.add_vehicle import AddVehicleScreen
 from screens.vehicle.view_update_vehicle import ViewUpdateVehicleScreen
+from screens.vehicle.driver_profile import DriverProfileScreen
 # ScreenManager to handle screen transitions
 class WindowManager(ScreenManager):
     user = None 
@@ -45,6 +46,8 @@ class RideHailingApp(MDApp):
         # Driver Operations
         Builder.load_file("kv/driver/add_vehicle_screen.kv")
         Builder.load_file("kv/driver/view_update_vehicle_screen.kv")
+        Builder.load_file("kv/driver/driver_profile_screen.kv")
+
 
         
 
@@ -65,6 +68,7 @@ class RideHailingApp(MDApp):
         sm.add_widget(RiderProfileScreen(name="rider_profile"))
         sm.add_widget(CompletedRidesScreen(name="completed_user_rides"))    
         sm.add_widget(ViewUpdateVehicleScreen(name="view_update_vehicle"))
+        sm.add_widget(DriverProfileScreen(name="driver_profile"))
 
 
         # Driver 
