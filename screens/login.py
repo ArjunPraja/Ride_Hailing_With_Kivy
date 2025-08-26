@@ -16,11 +16,11 @@ APP_PASSWORD = " "
 otp_storage = {}
 
 def generate_otp(length=6):
-    """Generate numeric OTP"""
+   
     return ''.join([str(random.randint(0, 9)) for _ in range(length)])
 
 def send_email_otp(receiver_email, otp):
-    """Send OTP via Gmail SMTP"""
+    
     msg = MIMEMultipart()
     msg['From'] = SENDER_EMAIL
     msg['To'] = receiver_email
@@ -59,7 +59,7 @@ class LoginScreen(Screen):
             self.show_popup("Enter password or use OTP login.")
 
     def send_otp(self):
-        """Generate and send OTP to email"""
+        
         email = self.ids.email.text.strip()
         if not email:
             self.show_popup("Enter your email first!")
@@ -77,7 +77,6 @@ class LoginScreen(Screen):
         self.show_popup(f"✅ OTP sent to {email}. It expires in 5 minutes.")
 
     def verify_otp(self, otp_input):
-        """Verify OTP input by user"""
         email = self.ids.email.text.strip()
         if not email:
             self.show_popup("Enter your email first!")
@@ -101,7 +100,6 @@ class LoginScreen(Screen):
             self.show_popup(" Invalid OTP!")
 
     def complete_login(self, user):
-        """Complete login and switch screens based on role"""
         if user["role"] == "Rider":
             self.manager.current = "user_menu"
         elif user["role"] == "Driver":
@@ -115,7 +113,6 @@ class LoginScreen(Screen):
         self.show_popup(f"Welcome {user['full_name']}!")
 
     def show_popup(self, message):
-        """Utility function to show popup messages"""
         popup = Popup(
             title='Login Info',
             content=Label(text=message),

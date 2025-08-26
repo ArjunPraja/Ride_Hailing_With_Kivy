@@ -7,7 +7,7 @@ import re
 class RegisterScreen(Screen):
 
     def register_user(self, full_name, email, phone, password, verify_password, role):
-        # Validation
+        
         if not all([full_name, email, phone, password, verify_password, role != "None"]):
             self.show_popup("All fields are required!")
             return
@@ -24,17 +24,17 @@ class RegisterScreen(Screen):
             self.show_popup("Email already registered!")
             return
 
-        # Save to MongoDB
+       
         user_data = {
             "full_name": full_name,
             "email": email,
             "phone": phone,
-            "password": password,  # Later you can hash this for security
+            "password": password,  
             "role": role
         }
         insert_users(user_data)
         self.show_popup("Registration Successful!")
-        # Clear input fields manually
+       
         self.ids.full_name.text = ""
         self.ids.email.text = ""
         self.ids.phone.text = ""
