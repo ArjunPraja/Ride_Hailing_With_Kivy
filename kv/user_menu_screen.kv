@@ -47,7 +47,7 @@
             size_hint: (0.7, None)
             height: dp(55)
             pos_hint: {"center_x": 0.5}
-            on_release: root.complete_ride()
+            on_release: app.root.current = "completed_user_rides"
 
         MDRectangleFlatButton:
             text: "Cancel Ride"

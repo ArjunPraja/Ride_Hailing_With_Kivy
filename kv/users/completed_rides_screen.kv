@@ -1,0 +1,27 @@
+<CompletedRidesScreen>:
+    name: "completed_user_rides"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "12dp"
+        padding: "15dp"
+
+        MDTopAppBar:
+            title: "My Completed Rides"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: setattr(app.root, "current", "user_menu")]]
+
+        ScrollView:
+            MDBoxLayout:
+                id: rides_list  # important
+                orientation: "vertical"
+                spacing: "10dp"
+                padding: "10dp"
+                adaptive_height: True
+
+        MDRaisedButton:
+            text: "Back"
+            size_hint_x: None
+            width: "120dp"
+            pos_hint: {"center_x": .5}
+            on_release: app.root.current = "user_menu"

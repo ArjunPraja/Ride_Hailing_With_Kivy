@@ -21,4 +21,5 @@ class UserMenuScreen(MDScreen):
 
     def logout(self):
         print("👋 User logged out")
+        self.manager.user =None
         self.manager.current = "login"
