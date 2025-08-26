@@ -62,3 +62,16 @@ def update_cancel_rider(rider_id: str):
 def show_my_accepted_rides(driver_id):
     rides = rides_collection.find({"driver_id": driver_id, "status": "Completed"})
     return list(rides)  
+
+
+
+def show_driver_all_rides(driver_id: str):
+    """
+    Fetch all rides for a specific driver using driver_id.
+    """
+    try:
+        rides = list(rides_collection.find({"driver_id": driver_id}))
+        return rides
+    except Exception as e:
+        print("Error fetching driver rides:", e)
+        return []

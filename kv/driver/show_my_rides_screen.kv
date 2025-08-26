@@ -1,0 +1,23 @@
+<DriverRidesScreen>:
+    name: "driver_rides"
+    rides_container: rides_container
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: dp(15)
+        padding: dp(15)
+
+        MDLabel:
+            text: "🚖 My Rides"
+            halign: "center"
+            font_style: "H5"
+            bold: True
+
+        ScrollView:
+            MDBoxLayout:
+                id: rides_container
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
