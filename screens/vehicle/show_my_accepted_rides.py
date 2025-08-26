@@ -69,6 +69,7 @@ class MyAcceptedRidesScreen(Screen):
             return
 
         rides_cursor = rides_collection.find({"driver_id": str(driver["_id"])})
+
         rides = list(rides_cursor)
 
         if not rides:
