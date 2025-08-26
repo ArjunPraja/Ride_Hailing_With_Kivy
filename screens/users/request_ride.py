@@ -33,7 +33,7 @@ class RequestRideScreen(MDScreen):
 
         
             result = insert_ride(ride_data)
-            print(f"✅ Ride Requested. ID: {result.inserted_id}")
+            self.show_popup(f"✅ Ride Requested. ID: {result.inserted_id}")
 
         
             self.ids.pickup_input.text = ""
