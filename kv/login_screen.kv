@@ -1,25 +1,41 @@
-
 <LoginScreen>:
     name: "login"
+
     MDBoxLayout:
         orientation: "vertical"
-        spacing: "20dp"
-        padding: "40dp"
+        spacing: "25dp"
+        padding: "50dp"
+        adaptive_height: True
+
         MDLabel:
             text: "Welcome Back 🚖"
             halign: "center"
             font_style: "H4"
+            size_hint_y: None
+            height: self.texture_size[1]
+
         MDTextField:
+            id: email
             hint_text: "Email"
+            helper_text: "Enter your registered email"
+            helper_text_mode: "on_focus"
             icon_right: "email"
+            mode: "rectangle"
+
         MDTextField:
+            id: password
             hint_text: "Password"
             password: True
             icon_right: "eye"
+            mode: "rectangle"
+            helper_text: "Enter your password"
+            helper_text_mode: "on_focus"
+
         MDRaisedButton:
             text: "Login"
             pos_hint: {"center_x": 0.5}
-            on_release: app.root.current = "home"
+            on_release: root.do_login()   # ✅ Call Python logic instead of blindly switching screen
+
         MDFlatButton:
             text: "Don't have an account? Register"
             pos_hint: {"center_x": 0.5}

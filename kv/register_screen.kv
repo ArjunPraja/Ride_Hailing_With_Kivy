@@ -1,29 +1,121 @@
-
 <RegisterScreen>:
     name: "register"
-    MDBoxLayout:
-        orientation: "vertical"
-        spacing: "20dp"
-        padding: "40dp"
-        MDLabel:
-            text: "Create Account 📝"
-            halign: "center"
-            font_style: "H4"
-        MDTextField:
-            hint_text: "Full Name"
-            icon_right: "account"
-        MDTextField:
-            hint_text: "Email"
-            icon_right: "email"
-        MDTextField:
-            hint_text: "Password"
-            password: True
-            icon_right: "lock"
-        MDRaisedButton:
-            text: "Register"
-            pos_hint: {"center_x": 0.5}
-            on_release: app.root.current = "home"
-        MDFlatButton:
-            text: "Already have an account? Login"
-            pos_hint: {"center_x": 0.5}
-            on_release: app.root.current = "login"
+
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: "vertical"
+            padding: [40,150, 40, 40]  # left, top, right, bottom padding
+            size_hint: 1, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}  
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: "10dp"
+                padding: "30dp"
+                size_hint: 0.85, 0.85
+                height: self.minimum_height
+                width: min(root.width * 0.9, 600)  
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                md_bg_color: 0.15, 0.15, 0.15, 0.9
+                radius: [20, 20, 20, 20]
+
+                MDLabel:
+                    text: "Create Account 📝"
+                    halign: "center"
+                    font_style: "H4"
+                    theme_text_color: "Custom"
+                    text_color: 1, 0.8, 0.2, 1
+
+                MDTextField:
+                    id: full_name
+                    hint_text: "Full Name"
+                    icon_right: "account"
+                    mode: "rectangle"
+                    size_hint_x: 1
+
+                MDTextField:
+                    id: email
+                    hint_text: "Email"
+                    icon_right: "email"
+                    mode: "rectangle"
+                    size_hint_x: 1
+
+                MDTextField:
+                    id: phone
+                    hint_text: "Phone Number"
+                    icon_right: "phone"
+                    mode: "rectangle"
+                    size_hint_x: 1
+
+                MDTextField:
+                    id: password
+                    hint_text: "Password"
+                    password: True
+                    icon_right: "lock"
+                    mode: "rectangle"
+                    size_hint_x: 1
+
+                MDTextField:
+                    id: verify_password
+                    hint_text: "Verify Password"
+                    password: True
+                    icon_right: "lock-check"
+                    mode: "rectangle"
+                    size_hint_x: 1
+
+                MDLabel:
+                    text: "Select Role"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 0.8, 0.2, 1
+
+                MDBoxLayout:
+                    spacing: 20
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDRaisedButton:
+                        text: "Rider"
+                        md_bg_color: 0.9, 0.2, 0.5, 1
+                        on_release: role_label.text = "Rider"
+
+                    MDRaisedButton:
+                        text: "Driver"
+                        md_bg_color: 0.2, 0.6, 0.9, 1
+                        on_release: role_label.text = "Driver"
+
+                MDLabel:
+                    id: role_label
+                    text: "None"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 0.9
+
+                MDRaisedButton:
+                    text: "Register"
+                    md_bg_color: 1, 0.8, 0.2, 1
+                    text_color: 0, 0, 0, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_release:
+                        root.register_user(
+                        full_name.text,
+                        email.text,
+                        phone.text,
+                        password.text,
+                        verify_password.text,
+                        role_label.text
+                        )
+
+
+                MDFlatButton:
+                    text: "Already have an account? Login"
+                    pos_hint: {"center_x": 0.5}
+                    text_color: 1, 0.8, 0.2, 1
+                    on_release:
+                        app.root.current = "login"
