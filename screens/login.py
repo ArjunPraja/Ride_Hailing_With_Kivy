@@ -1,7 +1,8 @@
 from kivy.uix.screenmanager import Screen
-from models.users_models import find_by_email
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from models.users_models import find_by_email
+import bcrypt  # pip install bcrypt
 
 class LoginScreen(Screen):
 
@@ -11,24 +12,29 @@ class LoginScreen(Screen):
 
         user = find_by_email(email)
 
-        if user: 
-            if user["password"] == password:
+        if user:
+            # ✅ Check hashed password
+            if bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
                 if user["role"] == "Rider":
-                    self.show_popup("User Login Successful")
-                    self.manager.current = "Home"
+                    self.show_popup(f"Welcome {user['full_name']}! (Rider)")
+                    self.manager.current = "user_menu"
 
                 elif user["role"] == "Driver":
-                    self.show_popup("Driver Login Successful")
-                    self.manager.current = "rider"
+                    self.show_popup(f"Welcome {user['full_name']}! (Driver)")
+                    self.manager.current = "driver_menu"
 
-                
+                # ✅ Save logged-in user globally (for profile, rides, etc.)
+                self.manager.current_screen.user = user  
+
+                # Clear fields
                 self.ids.email.text = ""
                 self.ids.password.text = ""
 
             else:
-                self.show_popup("Incorrect password!")  
+                self.show_popup("❌ Incorrect password!")
         else:
-            self.show_popup("Email not found! Please register first.") 
+            self.show_popup("⚠️ Email not found! Please register first.")
+
         return user
 
     def show_popup(self, message):
@@ -36,6 +42,6 @@ class LoginScreen(Screen):
             title='Login Info',
             content=Label(text=message),
             size_hint=(None, None),
-            size=(300, 200)
+            size=(320, 200)
         )
         popup.open()

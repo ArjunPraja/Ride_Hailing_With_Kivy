@@ -1,0 +1,50 @@
+<UserScreen@MDScreen>:
+    name: "user_menu"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "40dp"
+
+        MDLabel:
+            text: "🚖 Rider Menu"
+            halign: "center"
+            font_style: "H4"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDRaisedButton:
+            text: "Request Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.request_ride()
+
+        MDRaisedButton:
+            text: "View Ride by ID"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_ride_by_id()
+
+        MDRaisedButton:
+            text: "View My Rides"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_my_rides()
+
+        MDRaisedButton:
+            text: "Complete Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.complete_ride()
+
+        MDRaisedButton:
+            text: "Cancel Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.cancel_ride()
+
+        MDRaisedButton:
+            text: "Profile"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_profile()
+
+        MDRaisedButton:
+            text: "Logout"
+            md_bg_color: (1, 0, 0, 1)
+            pos_hint: {"center_x": 0.5}
+            on_release: root.logout()

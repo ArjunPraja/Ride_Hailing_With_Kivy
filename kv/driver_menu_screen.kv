@@ -1,0 +1,65 @@
+<DriverMenuScreen@MDScreen>:
+    name: "driver_menu"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "40dp"
+
+        MDLabel:
+            text: "🚕 Driver Menu"
+            halign: "center"
+            font_style: "H4"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDRaisedButton:
+            text: "View Ride Requests"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_ride_requests()
+
+        MDRaisedButton:
+            text: "View My Rides"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_my_rides()
+
+        MDRaisedButton:
+            text: "View Ride by ID"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_ride_by_id()
+
+        MDRaisedButton:
+            text: "Accept Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.accept_ride()
+
+        MDRaisedButton:
+            text: "Start Ride"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.start_ride()
+
+        MDRaisedButton:
+            text: "Add Vehicle"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.add_vehicle()
+
+        MDRaisedButton:
+            text: "View My Vehicles"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_my_vehicles()
+
+        MDRaisedButton:
+            text: "Update Vehicle"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.update_vehicle()
+
+        MDRaisedButton:
+            text: "Profile"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.view_profile()
+
+        MDRaisedButton:
+            text: "Logout"
+            md_bg_color: (1, 0, 0, 1)
+            pos_hint: {"center_x": 0.5}
+            on_release: root.logout()

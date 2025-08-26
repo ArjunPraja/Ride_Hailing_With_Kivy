@@ -13,10 +13,13 @@ class RideHailingApp(MDApp):
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.theme_style = "Light"
 
+        Builder.load_file("kv/user_menu_screen.kv")
         # Load KV files dynamically
         Builder.load_file("kv/home.kv")
         Builder.load_file("kv/login_screen.kv")
         Builder.load_file("kv/register_screen.kv")
+        Builder.load_file("kv/driver_menu_screen.kv")
+
 
         # Add screens
         sm = WindowManager()
