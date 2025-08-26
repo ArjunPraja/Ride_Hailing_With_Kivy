@@ -40,7 +40,7 @@ class RegisterScreen(Screen):
         self.ids.phone.text = ""
         self.ids.password.text = ""
         self.ids.verify_password.text = ""
-        self.ids.role_spinner.text = "None"
+        self.ids.role_label.text = "None"
         self.manager.current = "login"
 
     def show_popup(self, message):
