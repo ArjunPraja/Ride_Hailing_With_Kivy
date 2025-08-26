@@ -28,5 +28,8 @@ class DriverMenuScreen(MDScreen):
     def view_profile(self):
         print("View Profile clicked")
 
+    
     def logout(self):
-        print("Logout clicked")
+        print("👋 Driver logged out")
+        self.manager.user =None
+        self.manager.current = "login"
