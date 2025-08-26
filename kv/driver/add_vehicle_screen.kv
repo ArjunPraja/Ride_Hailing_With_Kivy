@@ -4,74 +4,74 @@
     FloatLayout:
         canvas.before:
             Color:
-                rgba: 1, 1, 1, 1
+                rgba: 0.95, 0.95, 0.95, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
 
-        BoxLayout:
-            orientation: "vertical"
-            padding: [40, 100, 40, 40]  # left, top, right, bottom
+        ScrollView:
             size_hint: 1, 1
-            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            do_scroll_x: False
 
             MDBoxLayout:
                 orientation: "vertical"
-                spacing: "15dp"
-                padding: "30dp"
-                size_hint: 0.85, 0.85
+                padding: [30, 100, 30, 30]
+                spacing: 20
+                size_hint_y: None
                 height: self.minimum_height
-                width: min(root.width * 0.9, 600)
-                pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                md_bg_color: 1, 1, 1, 1
-                radius: [20, 20, 20, 20]
 
-                MDLabel:
-                    text: "Add Vehicle Details"
-                    halign: "center"
-                    font_style: "H5"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-
-                MDTextField:
-                    id: brand_input
-                    hint_text: "Brand"
-                    mode: "rectangle"
-                    size_hint_x: 1
-
-                MDTextField:
-                    id: model_input
-                    hint_text: "Model"
-                    mode: "rectangle"
-                    size_hint_x: 1
-
-                MDTextField:
-                    id: year_input
-                    hint_text: "Year"
-                    mode: "rectangle"
-                    input_filter: "int"
-                    size_hint_x: 1
-
-                MDTextField:
-                    id: plate_input
-                    hint_text: "Plate Number"
-                    mode: "rectangle"
-                    size_hint_x: 1
-
-                MDTextField:
-                    id: color_input
-                    hint_text: "Color"
-                    mode: "rectangle"
-                    size_hint_x: 1
-
-                MDRaisedButton:
-                    text: "Add Vehicle"
-                    md_bg_color: 0.2, 0.6, 0.9, 1
+                MDCard:
+                    orientation: "vertical"
+                    padding: 30
+                    spacing: 15
+                    size_hint_x: 0.9
+                    size_hint_y: None
+                    height: self.minimum_height
                     pos_hint: {"center_x": 0.5}
-                    on_release: root.add_vehicle()
+                    md_bg_color: 1, 1, 1, 1
+                    elevation: 0  # flat card, no shadow
 
-                MDRaisedButton:
-                    text: "Back"
-                    md_bg_color: 0.8, 0.2, 0.2, 1
-                    pos_hint: {"center_x": 0.5}
-                    on_release: root.manager.current = "driver_menu" 
+                    MDLabel:
+                        text: "Add Vehicle Details"
+                        halign: "center"
+                        font_style: "H5"
+
+                    MDTextField:
+                        id: brand_input
+                        hint_text: "Brand"
+                        mode: "rectangle"
+
+                    MDTextField:
+                        id: model_input
+                        hint_text: "Model"
+                        mode: "rectangle"
+
+                    MDTextField:
+                        id: year_input
+                        hint_text: "Year"
+                        mode: "rectangle"
+                        input_filter: "int"
+
+                    MDTextField:
+                        id: plate_input
+                        hint_text: "Plate Number"
+                        mode: "rectangle"
+
+                    MDTextField:
+                        id: color_input
+                        hint_text: "Color"
+                        mode: "rectangle"
+
+                    MDRaisedButton:
+                        text: "Add Vehicle"
+                        elevation: 0
+                        md_bg_color: 0.2, 0.6, 0.9, 1
+                        pos_hint: {"center_x": 0.5}
+                        on_release: root.add_vehicle()
+
+                    MDRaisedButton:
+                        text: "Back"
+                        elevation: 0
+                        md_bg_color: 0.8, 0.2, 0.2, 1
+                        pos_hint: {"center_x": 0.5}
+                        on_release: root.manager.current = "driver_menu"
