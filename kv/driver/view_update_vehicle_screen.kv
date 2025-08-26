@@ -68,10 +68,11 @@
                 height: self.minimum_height
                 orientation: "vertical"
 
-        # Update form at bottom (initially hidden)
+        # Update form container
         ScrollView:
             size_hint_y: None
-            height: dp(300)
+            height: dp(450) if root.show_update_form else dp(0)
+            
             MDBoxLayout:
                 id: update_form
                 orientation: "vertical"
@@ -82,14 +83,31 @@
                 opacity: 1 if root.show_update_form else 0
                 disabled: False if root.show_update_form else True
 
-                MDLabel:
-                    text: "[b]UPDATE VEHICLE[/b]"
-                    markup: True
-                    halign: "center"
-                    font_style: "H5"
-                    theme_text_color: "Custom"
-                    text_color: 0,0,0,1
+                # Top bar for update form
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(50)
+                    padding: [10,5,10,5]
+                    spacing: 10
+                    md_bg_color: 0.2,0.5,0.9,1
 
+                    MDLabel:
+                        text: "[b]UPDATE VEHICLE DETAILS[/b]"
+                        markup: True
+                        font_style: "H5"
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                        halign: "center"
+
+                    MDRaisedButton:
+                        text: "Close"
+                        md_bg_color: 0.9,0.2,0.2,1
+                        text_color: 1,1,1,1
+                        size_hint_x: None
+                        width: dp(90)
+                        on_release: root.cancel_update()
+
+                # Input fields
                 MDTextField:
                     id: brand_input
                     hint_text: "Brand"
@@ -120,6 +138,7 @@
                     text: "Update Vehicle"
                     md_bg_color: 0.2,0.5,0.9,1
                     text_color: 1,1,1,1
+                    size_hint_x: 0.5
                     pos_hint: {"center_x":0.5}
                     on_release: root.update_vehicle()
 
