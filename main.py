@@ -19,7 +19,8 @@ from screens.vehicle.driver_profile import DriverProfileScreen
 from screens.vehicle.ride_request_accept import ShowRidesScreen
 from screens.vehicle.show_my_accepted_rides import MyAcceptedRidesScreen
 from screens.vehicle.show_my_rides import DriverRidesScreen
-# ScreenManager to handle screen transitions
+
+
 class WindowManager(ScreenManager):
     user = None 
     pass
@@ -77,9 +78,6 @@ class RideHailingApp(MDApp):
         sm.add_widget(ShowRidesScreen(name="show_rides"))
         sm.add_widget(MyAcceptedRidesScreen(name="my_accepted_rides"))
         sm.add_widget(DriverRidesScreen(name="driver_rides"))
-
-
-        # Driver 
         sm.add_widget(AddVehicleScreen(name="add_vehicle"))
 
 
