@@ -3,48 +3,78 @@
 
     MDBoxLayout:
         orientation: "vertical"
-        spacing: "20dp"
-        padding: "40dp"
+        spacing: "25dp"
+        padding: "30dp"
+        md_bg_color: 0.95, 0.95, 0.95, 1   # light gray background
 
         MDLabel:
-            text: "🚖 Rider Menu"
+            text: "🚖 Rider Dashboard"
             halign: "center"
             font_style: "H4"
+            bold: True
             size_hint_y: None
-            height: self.texture_size[1]
+            height: self.texture_size[1] + dp(20)
 
-        MDRaisedButton:
+        Widget:  # Spacer
+
+        MDRectangleFlatButton:
             text: "Request Ride"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.request_ride()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "View Ride by ID"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.view_ride_by_id()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "View My Rides"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.view_my_rides()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "Complete Ride"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.complete_ride()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "Cancel Ride"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.cancel_ride()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "Profile"
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
             on_release: root.view_profile()
 
-        MDRaisedButton:
+        MDRectangleFlatButton:
             text: "Logout"
-            md_bg_color: (1, 0, 0, 1)
+            font_size: "18sp"
+            size_hint: (0.7, None)
+            height: dp(55)
             pos_hint: {"center_x": 0.5}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            line_color: 1, 0, 0, 1
+            md_bg_color: 1, 0, 0, 1
             on_release: root.logout()
+
+        Widget:  # Spacer

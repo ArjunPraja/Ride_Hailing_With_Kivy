@@ -3,63 +3,105 @@
 
     MDBoxLayout:
         orientation: "vertical"
-        spacing: "20dp"
-        padding: "40dp"
+        md_bg_color: 0.95, 0.95, 0.95, 1   # light gray background
 
         MDLabel:
-            text: "🚕 Driver Menu"
+            text: "🚕 Driver Dashboard"
             halign: "center"
             font_style: "H4"
+            bold: True
             size_hint_y: None
-            height: self.texture_size[1]
+            height: self.texture_size[1] + dp(20)
+            padding_y: dp(15)
 
-        MDRaisedButton:
-            text: "View Ride Requests"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.view_ride_requests()
+        ScrollView:   # Makes screen scrollable on small devices
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: "15dp"
+                padding: "20dp"
+                size_hint_y: None
+                height: self.minimum_height
 
-        MDRaisedButton:
-            text: "View My Rides"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.view_my_rides()
+                MDRectangleFlatButton:
+                    text: "View Ride Requests"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_ride_requests()
 
-        MDRaisedButton:
-            text: "View Ride by ID"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.view_ride_by_id()
+                MDRectangleFlatButton:
+                    text: "View My Rides"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_my_rides()
 
-        MDRaisedButton:
-            text: "Accept Ride"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.accept_ride()
+                MDRectangleFlatButton:
+                    text: "View Ride by ID"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_ride_by_id()
 
-        MDRaisedButton:
-            text: "Start Ride"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.start_ride()
+                MDRectangleFlatButton:
+                    text: "Accept Ride"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.accept_ride()
 
-        MDRaisedButton:
-            text: "Add Vehicle"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.add_vehicle()
+                MDRectangleFlatButton:
+                    text: "Start Ride"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.start_ride()
 
-        MDRaisedButton:
-            text: "View My Vehicles"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.view_my_vehicles()
+                MDRectangleFlatButton:
+                    text: "Add Vehicle"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.add_vehicle()
 
-        MDRaisedButton:
-            text: "Update Vehicle"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.update_vehicle()
+                MDRectangleFlatButton:
+                    text: "View My Vehicles"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_my_vehicles()
 
-        MDRaisedButton:
-            text: "Profile"
-            pos_hint: {"center_x": 0.5}
-            on_release: root.view_profile()
+                MDRectangleFlatButton:
+                    text: "Update Vehicle"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.update_vehicle()
 
-        MDRaisedButton:
-            text: "Logout"
-            md_bg_color: (1, 0, 0, 1)
-            pos_hint: {"center_x": 0.5}
-            on_release: root.logout()
+                MDRectangleFlatButton:
+                    text: "Profile"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_profile()
+
+                MDRectangleFlatButton:
+                    text: "Logout"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    line_color: 1, 0, 0, 1
+                    md_bg_color: 1, 0, 0, 1
+                    on_release: root.logout()
