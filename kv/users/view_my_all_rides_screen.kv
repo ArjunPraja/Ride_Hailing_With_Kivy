@@ -1,0 +1,27 @@
+<ViewMyAllRidesScreen>:
+    name: "view_my_all_rides"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        padding: "15dp"
+
+        MDTopAppBar:
+            title: "My Rides"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: app.go_back_to_user_menu()]]
+
+        ScrollView:
+            MDBoxLayout:
+                id: rides_list    # 👈 THIS IS VERY IMPORTANT
+                orientation: "vertical"
+                spacing: "10dp"
+                padding: "10dp"
+                adaptive_height: True
+
+        MDRaisedButton:
+            text: "Back"
+            size_hint_x: None
+            width: "120dp"
+            pos_hint: {"center_x": .5}
+            on_release: app.root.current = "user_menu"

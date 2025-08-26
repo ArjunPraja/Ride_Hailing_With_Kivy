@@ -39,7 +39,7 @@
             size_hint: (0.7, None)
             height: dp(55)
             pos_hint: {"center_x": 0.5}
-            on_release: root.view_my_rides()
+            on_release: app.root.current = "view_my_all_rides"
 
         MDRectangleFlatButton:
             text: "Complete Ride"

@@ -21,7 +21,7 @@ def get_ride_by_id(ride_id: str):
 def get_rides_by_user(user_id: str, role: str = "passenger"):
     if role == "driver":
         return list(rides_collection.find({"driver_id": user_id}))
-    return list(rides_collection.find({"user_id": user_id}))
+    return list(rides_collection.find({"rider_id": user_id}))
 
 def update_ride_status(ride_id: str, status: str):
     try:
