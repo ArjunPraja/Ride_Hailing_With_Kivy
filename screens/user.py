@@ -1,5 +1,9 @@
 from kivymd.uix.screen import MDScreen
-
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from models.rides_models import update_cancel_rider
 class UserMenuScreen(MDScreen):
     def request_ride(self):
         print("🚖 User requested a ride")
@@ -13,8 +17,33 @@ class UserMenuScreen(MDScreen):
     def complete_ride(self):
         print("✅ Completing a ride")
 
+    def show_popup(self, message, title="Ride Status"):
+        layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        label = Label(text=message, halign="center")
+        btn = Button(text="OK", size_hint=(1, 0.3))
+        layout.add_widget(label)
+        layout.add_widget(btn)
+
+        popup = Popup(title=title,
+                      content=layout,
+                      size_hint=(0.7, 0.4),
+                      auto_dismiss=False)
+        btn.bind(on_release=popup.dismiss)
+        popup.open()
+
     def cancel_ride(self):
-        print("❌ Cancelling a ride")
+        user = getattr(self.manager, "user", None)
+        if not user:
+            self.show_popup("⚠ No user logged in")
+            return
+
+        rider_id = str(user["_id"])
+        cancelled_ride_id = update_cancel_rider(rider_id)  # ✅ Now works
+
+        if cancelled_ride_id:
+            self.show_popup(f"✅ Ride {cancelled_ride_id} cancelled successfully!")
+        else:
+            self.show_popup("❌ No requested rides found to cancel.")
 
     def view_profile(self):
         print("👤 Viewing profile")

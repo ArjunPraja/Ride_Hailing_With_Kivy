@@ -25,7 +25,7 @@ class RequestRideScreen(MDScreen):
             "driver_id": None,             
             "pickup": pickup,
             "drop_location": drop_location,
-            "status": "requested",
+            "status": "Requested",
             "fare": fare
         }
 
