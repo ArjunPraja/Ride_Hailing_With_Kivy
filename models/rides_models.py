@@ -38,6 +38,13 @@ def update_ride_status(ride_id: str, status: str):
         )
     except:
         return None
+    
+def get_all_requested_rides():
+    """Fetch all rides with status 'Requested'."""
+    rides = list(rides_collection.find({"status": "Requested"}))
+    for ride in rides:
+        ride["_id"] = str(ride["_id"])  
+    return rides
 
 def update_cancel_rider(rider_id: str):
     """Cancel the first requested ride for the rider."""

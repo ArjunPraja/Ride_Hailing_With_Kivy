@@ -1,0 +1,127 @@
+<ShowRidesScreen>:
+    name: "show_rides"
+    rides_list: rides_rv
+    no_rides_label: no_rides_lbl
+
+    BoxLayout:
+        orientation: "vertical"
+
+        # Top Bar
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(60)
+            md_bg_color: 0.2, 0.6, 0.9, 1
+            padding: dp(10)
+            spacing: dp(10)
+
+            MDLabel:
+                text: "[b]Ride Requests[/b]"
+                markup: True
+                font_style: "H5"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDRaisedButton:
+                text: "Back"
+                md_bg_color: 0.9,0.2,0.2,1
+                text_color: 1,1,1,1
+                size_hint_x: None
+                width: dp(80)
+                on_release: app.root.current = "driver_menu"
+
+        # Table Header
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(40)
+            md_bg_color: 0.9, 0.9, 0.9, 1
+            padding: dp(5)
+            spacing: dp(5)
+
+            MDLabel:
+                text: "Pickup"
+                bold: True
+                size_hint_x: 0.2
+                halign: "center"
+            MDLabel:
+                text: "Drop"
+                bold: True
+                size_hint_x: 0.25
+                halign: "center"
+            MDLabel:
+                text: "Fare"
+                bold: True
+                size_hint_x: 0.15
+                halign: "center"
+            MDLabel:
+                text: "Status"
+                bold: True
+                size_hint_x: 0.2
+                halign: "center"
+            MDLabel:
+                text: "Action"
+                bold: True
+                size_hint_x: 0.2
+                halign: "center"
+
+        # No Ride Message
+        MDLabel:
+            id: no_rides_lbl
+            text: ""
+            halign: "center"
+            theme_text_color: "Error"
+            font_style: "H5"
+            opacity: 0
+
+        # Ride List
+        ScrollView:
+            do_scroll_x: False
+
+            RecycleView:
+                id: rides_rv
+                viewclass: "RideRequestItem"
+                RecycleBoxLayout:
+                    default_size: None, dp(80)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: "vertical"
+
+<RideRequestItem>:
+    size_hint_y: None
+    height: dp(80)
+
+    MDCard:
+        orientation: "horizontal"
+        padding: dp(10)
+        spacing: dp(5)
+        size_hint_y: None
+        height: dp(80)
+        elevation: 3
+
+        MDLabel:
+            text: root.pickup
+            halign: "center"
+            size_hint_x: 0.2
+
+        MDLabel:
+            text: root.drop_location
+            halign: "center"
+            size_hint_x: 0.25
+
+        MDLabel:
+            text: root.fare
+            halign: "center"
+            size_hint_x: 0.15
+
+        MDLabel:
+            text: root.status
+            halign: "center"
+            size_hint_x: 0.2
+
+        MDRaisedButton:
+            text: "Accept" if root.status != "Accepted" else "Accepted"
+            size_hint_x: 0.2
+            md_bg_color: 0.2,0.6,0.9,1 if root.status != "Accepted" else (0.5,0.5,0.5,1)
+            disabled: True if root.status == "Accepted" else False
+            on_release: root.accept_ride()
