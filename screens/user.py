@@ -31,19 +31,6 @@ class UserMenuScreen(MDScreen):
         btn.bind(on_release=popup.dismiss)
         popup.open()
 
-    def cancel_ride(self):
-        user = getattr(self.manager, "user", None)
-        if not user:
-            self.show_popup("⚠ No user logged in")
-            return
-
-        rider_id = str(user["_id"])
-        cancelled_ride_id = update_cancel_rider(rider_id)  # ✅ Now works
-
-        if cancelled_ride_id:
-            self.show_popup(f"✅ Ride {cancelled_ride_id} cancelled successfully!")
-        else:
-            self.show_popup("❌ No requested rides found to cancel.")
 
     def view_profile(self):
         print("👤 Viewing profile")

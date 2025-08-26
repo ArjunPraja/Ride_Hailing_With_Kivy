@@ -7,25 +7,14 @@
         padding: "20dp"
 
         MDLabel:
-            text: " View Ride Details by ID"
+            text: "All Your Requested Rides"
             halign: "center"
             font_style: "H5"
             size_hint_y: None
             height: self.texture_size[1] + dp(20)
 
-        # Input field for Ride ID
-        MDTextField:
-            id: ride_id_input
-            hint_text: "Enter Ride ID"
-            mode: "rectangle"
-
-        MDRaisedButton:
-            text: "View Ride"
-            md_bg_color: 0, 0.5, 1, 1
-            on_release: root.view_ride()
-
-        # Ride Details Box
         ScrollView:
+            size_hint_y: 1  # Take remaining vertical space
             MDBoxLayout:
                 id: ride_details_box
                 orientation: "vertical"
@@ -33,8 +22,9 @@
                 spacing: "10dp"
                 padding: "10dp"
 
-        # Back Button
         MDRaisedButton:
             text: "⬅ Back"
             md_bg_color: 1, 0, 0, 1
+            size_hint_y: None
+            height: "50dp"
             on_release: app.root.current = "user_menu"
