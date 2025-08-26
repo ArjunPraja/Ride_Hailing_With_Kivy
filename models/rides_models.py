@@ -57,8 +57,8 @@ def update_cancel_rider(rider_id: str):
     )
     return str(ride["_id"])
 
-def delete_ride(ride_id: str):
-    try:
-        return rides_collection.delete_one({"_id": ObjectId(ride_id)})
-    except:
-        return None
+
+
+def show_my_accepted_rides(driver_id):
+    rides = rides_collection.find({"driver_id": driver_id, "status": "Completed"})
+    return list(rides)  

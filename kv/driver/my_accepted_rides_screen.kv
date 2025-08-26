@@ -1,0 +1,87 @@
+<MyAcceptedRidesScreen>:
+    name: "my_accepted_rides"
+    rides_list: rides_rv
+    no_rides_label: no_rides_lbl
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        MDLabel:
+            id: no_rides_lbl
+            text: ""
+            halign: "center"
+            theme_text_color: "Error"
+            font_style: "H5"
+            opacity: 0
+
+        RecycleView:
+            id: rides_rv
+            viewclass: "AcceptedRideItem"
+            RecycleBoxLayout:
+                default_size: None, dp(100)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+
+
+<AcceptedRideItem>:
+    size_hint_y: None
+    height: dp(100)
+    MDCard:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(5)
+        size_hint_y: None
+        height: dp(100)
+        elevation: 3
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(5)
+
+            MDLabel:
+                text: "Pickup: " + root.pickup
+                halign: "center"
+                size_hint_x: 0.25
+
+            MDLabel:
+                text: "Drop: " + root.drop_location
+                halign: "center"
+                size_hint_x: 0.25
+
+            MDLabel:
+                text: "Fare: " + root.fare
+                halign: "center"
+                size_hint_x: 0.15
+
+            MDLabel:
+                text: root.status
+                halign: "center"
+                size_hint_x: 0.15
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(5)
+            size_hint_y: None
+            height: dp(40)
+
+            MDRaisedButton:
+                text: "Start Ride"
+                md_bg_color: 0.2, 0.6, 0.9, 1
+                on_release: root.start_ride()
+                disabled: root.status != "Accepted"
+
+            MDRaisedButton:
+                text: "Cancel Ride"
+                md_bg_color: 0.9, 0.2, 0.2, 1
+                on_release: root.cancel_ride()
+                disabled: root.status in ["Completed", "Cancelled"]
+
+            MDRaisedButton:
+                text: "Completed"
+                md_bg_color: 0.2, 0.9, 0.3, 1
+                on_release: root.complete_ride()
+                disabled: root.status != "In Progress"

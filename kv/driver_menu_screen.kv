@@ -31,37 +31,26 @@
                     on_release: app.root.current = "show_rides"
                      
 
+
                 MDRectangleFlatButton:
-                    text: "View My Rides"
+                    text: "Show My Accepted Rides"
+                    font_size: "16sp"
+                    size_hint: (0.8, None)
+                    height: dp(48)
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.root.current = "my_accepted_rides"
+                     
+
+                
+                MDRectangleFlatButton:
+                    text: "View My Completed Rides"
                     font_size: "16sp"
                     size_hint: (0.8, None)
                     height: dp(48)
                     pos_hint: {"center_x": 0.5}
                     on_release: root.view_my_rides()
 
-                MDRectangleFlatButton:
-                    text: "View Ride by ID"
-                    font_size: "16sp"
-                    size_hint: (0.8, None)
-                    height: dp(48)
-                    pos_hint: {"center_x": 0.5}
-                    on_release: root.view_ride_by_id()
-
-                MDRectangleFlatButton:
-                    text: "Accept Ride"
-                    font_size: "16sp"
-                    size_hint: (0.8, None)
-                    height: dp(48)
-                    pos_hint: {"center_x": 0.5}
-                    on_release: root.accept_ride()
-
-                MDRectangleFlatButton:
-                    text: "Start Ride"
-                    font_size: "16sp"
-                    size_hint: (0.8, None)
-                    height: dp(48)
-                    pos_hint: {"center_x": 0.5}
-                    on_release: root.start_ride()
+ 
 
                 MDRectangleFlatButton:
                     text: "Add Vehicle"
