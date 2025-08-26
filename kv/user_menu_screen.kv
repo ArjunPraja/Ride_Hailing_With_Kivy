@@ -63,7 +63,8 @@
             size_hint: (0.7, None)
             height: dp(55)
             pos_hint: {"center_x": 0.5}
-            on_release: root.view_profile()
+            on_release: app.root.current = "rider_profile"
+
 
         MDRectangleFlatButton:
             text: "Logout"
