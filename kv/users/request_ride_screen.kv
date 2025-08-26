@@ -1,0 +1,32 @@
+<RequestRideScreen>:
+    name: "request_ride"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "30dp"
+
+        MDLabel:
+            text: "Request a Ride 🚖"
+            halign: "center"
+            font_style: "H5"
+
+        MDTextField:
+            id: pickup_input
+            hint_text: "Enter Pickup Location"
+            mode: "rectangle"
+
+        MDTextField:
+            id: drop_input
+            hint_text: "Enter Drop Location"
+            mode: "rectangle"
+
+        MDRaisedButton:
+            text: "Request Ride"
+            md_bg_color: 0, 0.5, 1, 1
+            on_release: root.request_ride()
+
+        MDRaisedButton:
+            text: "Back to Menu"
+            md_bg_color: 1, 0, 0, 1
+            on_release: root.manager.current = "user_menu"

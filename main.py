@@ -8,6 +8,7 @@ from screens.register import RegisterScreen
 from screens.home import HomeScreen
 from screens.user import UserMenuScreen
 from screens.driver import DriverMenuScreen
+from screens.users.request_ride import RequestRideScreen
 
 
 # ScreenManager to handle screen transitions
@@ -27,7 +28,7 @@ class RideHailingApp(MDApp):
         Builder.load_file("kv/register_screen.kv")
         Builder.load_file("kv/user_menu_screen.kv")
         Builder.load_file("kv/driver_menu_screen.kv")
-
+        Builder.load_file("kv/users/request_ride_screen.kv")
         # Create screen manager
         sm = WindowManager()
 
@@ -37,6 +38,7 @@ class RideHailingApp(MDApp):
         sm.add_widget(RegisterScreen(name="register"))
         sm.add_widget(UserMenuScreen(name="user_menu"))
         sm.add_widget(DriverMenuScreen(name="driver_menu"))
+        sm.add_widget(RequestRideScreen(name="request_ride"))
 
         return sm
 

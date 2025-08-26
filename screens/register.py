@@ -34,6 +34,13 @@ class RegisterScreen(Screen):
         }
         insert_users(user_data)
         self.show_popup("Registration Successful!")
+        # Clear input fields manually
+        self.ids.full_name.text = ""
+        self.ids.email.text = ""
+        self.ids.phone.text = ""
+        self.ids.password.text = ""
+        self.ids.verify_password.text = ""
+        self.ids.role_spinner.text = "None"
         self.manager.current = "login"
 
     def show_popup(self, message):
